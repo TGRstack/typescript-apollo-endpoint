@@ -1,0 +1,84 @@
+{
+  "name": "skeleton-ts-service",
+  "version": "1.0.0",
+  "description": "TS skeleton for services (no typing export)",
+  "main": "build/index.js",
+  "dependencies": {
+    "lodash.clonedeep": "4.5.0",
+    "lodash.isequal": "4.5.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.0.0",
+    "@babel/core": "7.0.1",
+    "@babel/preset-env": "7.0.0",
+    "@tgrx/tslint-config-tgr": "5.0.0",
+    "@trust/webcrypto": "0.9.2",
+    "@types/classnames": "2.2.6",
+    "@types/enzyme": "3.1.15",
+    "@types/jest": "23.1.6",
+    "@types/lodash.clonedeep": "4.5.4",
+    "@types/lodash.isequal": "4.5.3",
+    "babel-loader": "8.0.4",
+    "chokidar": "2.0.4",
+    "chokidar-cli": "1.2.1",
+    "commitizen": "2.10.1",
+    "copy-webpack-plugin": "4.5.4",
+    "cz-emoji": "1.1.2",
+    "dotenv-webpack": "1.5.7",
+    "enzyme": "3.3.0",
+    "enzyme-adapter-react-16": "1.1.1",
+    "file-loader": "2.0.0",
+    "html-webpack-plugin": "3.2.0",
+    "identity-obj-proxy": "3.0.0",
+    "jest": "23.1.0",
+    "node-sass": "4.10.0",
+    "nps": "5.9.3",
+    "nps-utils": "1.7.0",
+    "replace": "1.0.0",
+    "sass-loader": "7.0.3",
+    "standard-version": "4.4.0",
+    "style-loader": "0.21.0",
+    "ts-jest": "22.4.6",
+    "ts-loader": "4.4.2",
+    "ts-node": "6.0.5",
+    "tsconfig-paths-webpack-plugin": "3.2.0",
+    "tslint": "5.11.0",
+    "typescript": "3.0.3",
+    "typings-for-css-modules-loader": "1.7.0",
+    "webpack": "4.12.2",
+    "webpack-cli": "3.0.8",
+    "webpack-dev-server": "^3.1.14",
+    "webpack-merge": "4.1.5",
+    "webpack-node-externals": "1.7.2",
+    "whatwg-fetch": "3.0.0",
+    "write-file-webpack-plugin": "4.3.2"
+  },
+  "scripts": {
+    "start": "nps",
+    "test": "nps test",
+    "help": "nps help"
+  },
+  "config": {
+    "cz-emoji": {
+      "scopes": [
+        "$user",
+        "$dev",
+        "$ops"
+      ]
+    },
+    "commitizen": {
+      "path": "./node_modules/cz-emoji"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TGRstack/skeleton-ts-service.git"
+  },
+  "keywords": [],
+  "author": "Florian Mettetal <florian.mettetal@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TGRstack/skeleton-ts-service/issues"
+  },
+  "homepage": "https://github.com/TGRstack/skeleton-ts-service#readme"
+}

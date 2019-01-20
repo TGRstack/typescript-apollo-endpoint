@@ -1,0 +1,12 @@
+{
+  "extends": [
+    "@tgrx/tslint-config-tgr"
+  ],
+  "rules": {
+    "no-implicit-dependencies": [true, "dev", ["modules", "types", "components"]],
+    "no-submodule-imports": [
+      true,
+      "modules", "types", "components"
+    ]
+  }
+}
