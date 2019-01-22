@@ -1,23 +1,27 @@
 // TODO: refactor playground and logger to apolloMiddleware
 
 import { ApolloServer } from 'apollo-server-express'
+import config from 'config'
 import * as colors from 'config/console_colors'
-import { isProd } from 'config/environment'
 import { Resolvers, Schema, } from 'gql/index'
 
 const playgroundConfig = (() => {
   // https://www.apollographql.com/docs/apollo-server/features/graphql-playground.html#Configuring-Playground
+
+  const defaultQuery = 'query{ hello }'
+
   return {
     playground: {
       // settings: {
       //   'editor.theme': 'light',
       // },
-      // tabs: [
-      //   {
-      //     endpoint,
-      //     query: defaultQuery,
-      //   },
-      // ],
+      responses: ['{}'],
+      tabs: [
+        {
+          endpoint: config.GRAPHQL_EXPLORE || '/graphql',
+          query: defaultQuery,
+        },
+      ],
     }
   }
 })()
@@ -25,18 +29,18 @@ const playgroundConfig = (() => {
 const loggingConfig = (() => {
   return {
     formatError: (error: any) => {       // tslint:disable-line no-any
-      !isProd && console.log(colors.error(error))        // tslint:disable-line no-console
+      !config.isProd && console.log(colors.error(error))        // tslint:disable-line no-console
       return error
     },
     formatResponse: (response: any) => { // tslint:disable-line no-any
-      !isProd && console.log(colors.info(response))      // tslint:disable-line no-console
+      !config.isProd && console.log(colors.info(response))      // tslint:disable-line no-console
       return response
     },
   }
 })()
 
 const apolloConfig = (() => {
-  // isProd?
+  // config.isProd?
   // introspection: true,
   // playground: true,
 

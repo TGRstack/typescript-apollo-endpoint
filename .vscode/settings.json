@@ -1,5 +1,7 @@
 {
   "files.exclude": {
+    "**/.netlify": true,
+    "**/.vscode": true,
     "**/bin": true,
     "**/build": true,
     "**/dist": true,
@@ -13,6 +15,8 @@
     "**/webpack": true,
   },
   "search.exclude": {
+    // "**/.netlify": true,
+    // "**/.vscode": true,
     "**/bin": true,
     "**/build": true,
     "**/dist": true,

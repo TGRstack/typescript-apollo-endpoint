@@ -3,7 +3,7 @@
 - [x] a graphql express server
 - [x] playground explorer
 - [x] production build
-- [ ] ssl
+- [x] ssl
 - [ ] docker
 - ~~websockets~~
 

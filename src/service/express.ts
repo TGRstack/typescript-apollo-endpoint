@@ -1,6 +1,8 @@
 import * as colors from 'config/console_colors'
 import * as express from 'express'
+import * as fs from 'fs'
 import * as http from 'http'
+import * as https from 'https'
 import ApolloServer from './apollo'
 
 // tslint:disable-next-line no-any
@@ -29,6 +31,8 @@ const SUCCESS_MESSAGE = (config: any) => {
 export default class Express {
   app: express.Express
   config: any                     // tslint:disable-line no-any
+  server: any                     // tslint:disable-line no-any
+  serverConfig: any[]             // tslint:disable-line no-any
   successMessage: string
   middleware: any                 // tslint:disable-line no-any
 
@@ -40,6 +44,8 @@ export default class Express {
   }) {
     this.app = express()
     this.config = config
+    this.server = config.SSL ? https : http
+    this.serverConfig = []
     this.middleware = middleware
     this.successMessage = SUCCESS_MESSAGE(config)
 
@@ -48,6 +54,8 @@ export default class Express {
 
   setup() {
     const {app, config, middleware, } = this
+
+    this.serverConfig = this.setupConfig()
 
     // Express
     middleware.expressSecurity(app)
@@ -59,12 +67,31 @@ export default class Express {
       path: config.GRAPHQL_REST,
     })
   }
+  setupConfig() {
+    const {app, config: {SSL, SSL_KEY, SSL_CRT}} = this
+
+    const sslConfig = (() => {
+      const res: {key?: Buffer, cert?: Buffer} = {}
+      if (SSL) {
+        res.key = fs.readFileSync(SSL_KEY)
+        res.cert = fs.readFileSync(SSL_CRT)
+      }
+
+      return res
+    })()
+
+    return [sslConfig, app].filter(el =>
+      typeof el !== 'object'
+      || Array.isArray(el)
+      || Object.keys(el).length > 0
+    )
+  }
 
   start() {
-    const {app, config, } = this // middleware,
+    const {config, server, serverConfig} = this
 
     // Create a http/ws listener for our express app.
-    const ws = http.createServer(app)
+    const ws = server.createServer(...serverConfig)
     const listener = ws.listen({port: config.PORT}, () => {
       // middleware.graphqlWs(ws)
 
@@ -73,30 +100,4 @@ export default class Express {
     })
     return listener
   }
-
-  // someHTTPS() {
-  //   TODO: switching between HTTP and HTTPS
-  //   const {
-  //     HOST_NAME,
-  //     PORT,
-  //   } = process.env
-  //   export const development = {
-  //     hostname: HOST_NAME,
-  //     port: PORT,
-  //     ssl: false,
-  //   }
-  //   https://www.apollographql.com/docs/apollo-server/essentials/server.html#ssl
-  //   const production = {
-  //     ssl: true,
-  //     port: PORT || 443,
-  //     hostname: HOST_NAME || 'api.example.com',
-  //   }
-  //   {
-  //     key: fs.readFileSync(`./ssl/${environment}/server.key`),
-  //     cert: fs.readFileSync(`./ssl/${environment}/server.crt`)
-  //   }
-
-  //   export const staging
-  //   export const test
-  // }
 }
