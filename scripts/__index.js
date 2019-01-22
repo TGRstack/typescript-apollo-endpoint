@@ -4,6 +4,7 @@ const build = require('./build.js')
 const commit = require('./commit.js')
 const lint = require('./lint.js')
 const npm = require('./npm.js')
+const open = require('./open.js')
 const release = require('./release.js')
 const scrub = require('./scrub.js')
 const shortcuts = require('./shortcuts')
@@ -30,6 +31,7 @@ const scripts =  {
   git,
   lint,
   npm,
+  open,
   publish,
   release,
   start,

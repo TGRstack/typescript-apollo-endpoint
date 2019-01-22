@@ -1,14 +1,18 @@
-import Mutations, { defaultValues as mutationDefaults } from './Mutations'
+// import Mutations, { defaultValues as mutationDefaults } from './Mutations'
+import Queries from './Queries'
+import Schema from './Schema'
 
 const Resolvers = {
-  Mutation: Mutations
+  // Mutation: Mutations,
+  Query: Queries,
 }
 const ResolverDefaults = {
-  ...mutationDefaults,
+  // ...mutationDefaults,
 }
 
 export {
-  Mutations,
+  // Mutations,
   Resolvers,
   ResolverDefaults,
+  Schema,
 }

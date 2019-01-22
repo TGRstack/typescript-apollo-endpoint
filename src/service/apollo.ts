@@ -1,22 +1,9 @@
 // TODO: refactor playground and logger to apolloMiddleware
 
-import { ApolloServer, gql } from 'apollo-server-express'
+import { ApolloServer } from 'apollo-server-express'
 import * as colors from 'config/console_colors'
 import { isProd } from 'config/environment'
-
-// Construct a schema, using GraphQL schema language
-const typeDefs = gql`
-  type Query {
-    hello: String
-  }
-`
-
-// Provide resolver functions for your schema fields
-const resolvers = {
-  Query: {
-    hello: () => 'Hello world!',
-  },
-}
+import { Resolvers, Schema, } from 'gql/index'
 
 const playgroundConfig = (() => {
   // https://www.apollographql.com/docs/apollo-server/features/graphql-playground.html#Configuring-Playground
@@ -54,8 +41,8 @@ const apolloConfig = (() => {
   // playground: true,
 
   return {
-    resolvers,
-    typeDefs,
+    resolvers: Resolvers,
+    typeDefs: Schema,
     ...playgroundConfig,
     ...loggingConfig
   }

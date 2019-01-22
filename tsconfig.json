@@ -25,10 +25,10 @@
       "*": ["node_modules/*", "src/*",],
       // list of submodules matching tslint
       "config/*": ["src/config/*"],
-      // "src/gql/",
-      // "src/modules/",
-      // "src/types/",
-      // "src/utils/",
+      "gql/*": ["src/gql/*"],
+      "modules/*": ["src/modules/*"],
+      "types/*": ["src/types/*"],
+      "utils/*": ["src/utils/*"],
     },
     // "rootDirs": [],                        /* List of root folders whose combined content represents the structure of the project at runtime. */
     // "typeRoots": [],                       /* List of folders to include type definitions from. */

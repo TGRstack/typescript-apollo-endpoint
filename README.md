@@ -139,7 +139,7 @@ src/
 ##### Express
 
 - [x] :globe_with_meridians:  `express-server`
-- [ ] :bread: in dev a browser to the website is opened
+- [x] :bread: in dev a browser to the website is opened
 - [ ] :passport_control:  `passport` for Authorization
 
 ##### GraphQL
