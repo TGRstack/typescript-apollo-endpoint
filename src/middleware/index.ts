@@ -1,5 +1,7 @@
-function Middlwares(props) {
-  return props
-}
+// import * as apolloMiddleware from './apollo'
+import * as expressMiddleware from './express'
 
-export default Middlwares
+export default {
+  // ...apolloMiddleware,
+  ...expressMiddleware,
+}

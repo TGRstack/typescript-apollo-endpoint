@@ -1,6 +1,7 @@
 const Dotenv = require('dotenv-webpack');
+const fs = require('fs')
 const path = require('path')
-const WriteFilePlugin = require('write-file-webpack-plugin');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 const paths = require('./paths')
 
@@ -29,28 +30,31 @@ const typescript = (() => {
       }
     ]
   }
-  // const tsPaths = new TsconfigPathsPlugin({
-  //   configFile,
-  //   extensions: [".ts", ".tsx"],
-  // })
+  const tsPaths = new TsconfigPathsPlugin({
+    configFile,
+  })
 
   return {
     loader,
-    // tsPaths,
+    // paths: tsPaths,
   }
 })()
 
+// ## GRAPHQL
+// const graphql = {
+//   test: /\.(graphql|gql)$/,
+//   exclude: /node_modules/,
+//   loader: 'graphql-tag/loader',
+// }
 
-// FIXME: image loading isn't working, using copyWebpack instead
 // ## FILES like csv and images
 const files = {
-  // test: /\.(png|gif|jpe?g)$/,
+  // test: /\.(png|jpg|gif)$/,
   exclude: [/\.js$/, /\.ts$/, /\.json$/],
   use: [
     {
       loader: 'file-loader',
       options: {
-        publicPath: 'assets/',
         name (file) {
           if (process.env === 'development' || process.env === undefined) {
             return '[path][name].[ext]'
@@ -63,6 +67,32 @@ const files = {
   ]
 }
 
+// # PLUGINS
+const dotEnvOpts = (() => {
+  /** dotEnvIfExists
+   *
+   * Uses .env.development for default values
+   */
+  const dotEnvIfExists = (() => {
+    const envPath = path.join(paths._, '.env')
+    const defaultEnvPath = envPath+'.development'
+
+    const envExists = fs.existsSync(envPath)
+    return envExists
+      ? envPath
+      : defaultEnvPath
+  })()
+
+  return {
+    path: dotEnvIfExists, // path.join(paths._, '.env'), //  dotEnvIfExists,
+    // load '.env.development' to verify the '.env' variables are all set.
+    safe: path.join(paths._, '.env')+'.development',
+    // load all the predefined 'process.env' variables which will trump anything local per dotenv specs.
+    systemvars: true,
+    // hide any errors
+    // silent: true
+  }
+})()
 
 module.exports = {
   node: {
@@ -70,25 +100,18 @@ module.exports = {
     __filename: false,
   },
   resolve: {
-    extensions: ['.ts', '.js'],
-    modules: [paths.src._, paths.node_modules],
-    // plugins: [
-    //   typescript.paths,
-    // ]
+    extensions: ['.csv', '.ts', '.js', '.json',],
+    modules: ['src', 'node_modules'],
   },
   module: {
     rules: [
       typescript.loader,
-      files
+      // typescript.paths,
+      // graphql,
+      files,
     ],
   },
   plugins: [
-    new WriteFilePlugin({ log: true }),
-    new Dotenv({
-      path: path.join(paths._, '.env'),
-      safe: true,    // load '.env.example' to verify the '.env' variables are all set. Can also be a string to a different file.
-      systemvars: true, // load all the predefined 'process.env' variables which will trump anything local per dotenv specs.
-      // silent: true   // hide any errors
-    }),
+    new Dotenv(dotEnvOpts)
   ],
-};
+}

@@ -1,6 +1,5 @@
 // Client Entry Point
-import stack from './stack'
+const service = require('./stack') // tslint:disable-line no-var-requires
 
-const service = stack()
-
-export default service
+// NOTE: nothing consumes or externally controls this service
+// export default service

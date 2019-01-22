@@ -1,15 +1,12 @@
+import config from './config'
 import middleware from './middleware'
-import Service from './service'
+import service from './service'
 
-const config = {
-  endpoint: '/',
-  host: '127.0.0.1',
-  port: 3000,
-}
-
-const Stack = Service({
+const Stack = new service({
   config,
   middleware,
 })
+
+Stack.start()
 
 export default Stack

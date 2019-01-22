@@ -31,3 +31,8 @@ export const arrDiags = (arr: any[][]) => {
 
   return [TLBR, BLTR]
 }
+
+// tslint:disable-next-line no-any
+export function times(n: number, func: (...args: any[]) => any) {
+  return Array.from(Array(n)).map((_, i) => func.call(func, i))
+}

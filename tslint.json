@@ -3,10 +3,19 @@
     "@tgrx/tslint-config-tgr"
   ],
   "rules": {
-    "no-implicit-dependencies": [true, "dev", ["modules", "types", "components"]],
+    "no-implicit-dependencies": [
+      // config
+      true, "dev",
+      // src subdirectories
+      ["config", "gql", "modules", "types", "utils"]
+    ],
     "no-submodule-imports": [
+      // config
       true,
-      "modules", "types", "components"
+      // src subdirectories
+      "config", "gql", "modules", "types", "utils",
+      // imports
+      "colors"
     ]
   }
 }

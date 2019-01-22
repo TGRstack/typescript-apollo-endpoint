@@ -4,3 +4,17 @@ export function uuid() {
     return  (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
   })
 }
+
+export const webaddress = ({
+  protocol = 'http',
+  host = 'localhost',
+  port = 99999,
+  path = '/'
+}: {
+  protocol?: string
+  host?: string
+  port?: string | number
+  path?: string
+} = {}) =>
+  `${protocol}://${host}:${port}/${path.length > 1 && path.substring(0, 1) === '/'
+    ? path.substring(1, path.length) : path}`
