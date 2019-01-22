@@ -68,7 +68,8 @@ $ nps ss
 * nps start.server      # Nodemon and webpack builds restart when files change
 * nps help              # Displays all available commands
 * nps commit            # Creates a commit, don't use `git commit -m ...`
-* nps build             # Builds the module
+* nps build             # Builds a development version of the service
+* nps build.prod        # Builds a production version of the service (w/ some testing - overidable)
 * nps lint              # Lint checks the module
 * nps test              # Test checks the module
 ```
@@ -79,9 +80,9 @@ $ nps ss
 
 ### Docs
 
-- [HowTo make a TS Module w/ Declarations](http://www.tgrstack.com/#ts-module_articles)
+- [TGRstack.com Wiki](https://github.com/TGRstack/tgrstack.com/wiki)
+- [How to make a TS Module w/ Declarations](http://www.tgrstack.com/#ts-module_articles)
 - [TS-React-App](https://github.com/TGRstack/react-app)
-- [TS-GraphqL-Endpoint](https://github.com/Falieson/2018-typescript-graphql-endpoint)
 
 ### File Structure
 
