@@ -46,9 +46,27 @@ Setting this up is outside the scope of the skeleton. A tutorial will be include
     "@tgrx/tslint-config-tgr": "5.0.0", # TGR tslint settings for minimial clutter
 ```
 
-## Upgrading TS-GQL-Endpoint from the TS-Skeleton upstream
+## Upgrading your Skeleton from an upstream
 
-<!-- TODO: Instructions for Upstream upgrades -->
+[Github Documentation](https://help.github.com/articles/merging-an-upstream-repository-into-your-fork/)
+
+### Initial Setup
+
+1) First, clone this repo to your local machine
+2) Change the remote name `git remote rename origin upstream`
+3) Create a new repository in github/gitlab
+4) Add the new remote `git remote add origin <your-new-address>`
+
+### Usage
+
+When updates for the upstream are available, merge them into your skeleton
+
+```bash
+git pull upstream master
+# Handle merge conflicts if necessary
+git commit # commit the changes if necessary
+git push origin master
+```
 
 ## Developing a TS-Service
 
