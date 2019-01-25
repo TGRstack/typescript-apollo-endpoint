@@ -1,3 +1,4 @@
+import { isProd } from 'config/environment'
 import * as winston from 'winston'
 const {
   align,
@@ -10,8 +11,8 @@ const {
 
 // CONSTANTS
 export const outputDir = 'logs'
-const maxFiles = 20     // 5MB * 20 = 100MB
-const maxsize = 5242880 // 5MB
+const maxFiles = isProd ? 20      : 1        // 5MB * 20 = 100MB
+const maxsize  = isProd ? 5242880 : 1048576  // 5MB
 
 // FORMATTERS
 const wfTimestamp = timestamp({ format: 'YYYY-MM-DD HH:mm:ss' })
