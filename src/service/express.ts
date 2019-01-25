@@ -3,6 +3,7 @@ import * as express from 'express'
 import * as fs from 'fs'
 import * as http from 'http'
 import * as https from 'https'
+import Logger from 'modules/logger'
 import ApolloServer from './apollo'
 
 // tslint:disable-next-line no-any
@@ -96,7 +97,7 @@ export default class Express {
       // middleware.graphqlWs(ws)
 
       // tslint:disable-next-line no-console
-      console.log(this.successMessage)
+      Logger.info(this.successMessage)
     })
     return listener
   }

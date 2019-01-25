@@ -5,7 +5,8 @@
 - [x] production build
 - [x] ssl
 - [ ] docker
-- ~~websockets~~
+- [x] Winston Logger
+- [ ] Winston Logger hooked into Morgan Stream
 
 ## CLEANUP
 
