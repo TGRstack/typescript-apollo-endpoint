@@ -121,32 +121,40 @@ src/
 
 ```text
 /
-├── .netlify/         - pretty good for rolling builds
-├── .vscode/          - some sane settings but hides lightly used folders
-├── build/   (hidden) - the output of the webpack build process
-├── jest/    (hidden) - Jest setup and mocks
-├── node_modules/ (hidden) - the output of `npm i -D`
+├── .netlify/         - pretty good for rolling builds                      (hidden)
+├── .vscode/          - some sane settings but hides lightly used folders   (hidden)
+├── build/            - the output of the webpack build process             (hidden)
+├── jest/             - Jest setup and mocks                                (hidden)
+├── logs/             - Store logs in files (configged by `module/logger`)
+├── node_modules/         - the output of `npm i -D`                        (hidden)
 ├── scripts/          - LOOK IN HERE, all the functionality avail in `nps`
 ├── src/              - LOOK IN HERE, the server
     └── <DESCRIBED IN-DEPTH ABOVE>
-├── webpack/ (hidden) - Webpack configuration for making builds
-├── .babelrc          - transpilation settings mixed w/ tsconfig
+├── webpack/          - Webpack configuration for making builds             (hidden)
+├── .babelrc          - transpilation settings mixed w/ tsconfig            (hidden)
 ├── .env              - server environment's settings (removed by `.gitignore`)
 ├── .env.development  - suggestions for development env settings
 ├── .env.example      - a list of required `.env` settings
-├── .gitignore        - a list of files that should not be checked into git
-├── .npmignore        - a list of files that should not be published to npm
-├── .npmrc            - npm install settings (package-lock.json disabled)
-├── .nvmrc            - nvm config that sets the terminals NPM version
-├── jest.config.js    - npm install settings (package-lock.json disabled)
-├── package-scripts.js - nps entry point (reroutes to `/scripts/`)
+├── .gitignore        - a list of files that should not be checked into git (hidden)
+├── .npmignore        - a list of files that should not be published to npm (hidden)
+├── .npmrc            - npm install settings (package-lock.json disabled)   (hidden)
+├── .nvmrc            - nvm config that sets the terminals NPM version      (hidden)
+├── jest.config.js    - npm install settings (package-lock.json disabled)   (hidden)
+├── nodemon.json      - configure nodemon (especially which directories to ignore)  (hidden)
+├── package-scripts.js - nps entry point (reroutes to `/scripts/`)          (hidden)
 ├── package.json      - list of npm packages to be installed
 ├── README.md         - the most important documentation
 ├── TODO.md           - checklist of goals for the project
-├── tsconfig.jest.json - Jest specific Typescript configuration
-├── tsconfig.json     - Typescript settings and module aliasing
-└── tslint.json       - Linting settings (**replaced by ESlint 2019Q3**)
+├── tsconfig.jest.json - Jest specific Typescript configuration             (hidden)
+├── tsconfig.json     - Typescript settings and module aliasing             (hidden)
+└── tslint.json       - Linting settings (**replaced by ESlint 2019Q3**)    (hidden)
 ```
+
+##### Accessing Hidden Files from VSCode
+
+If you are using VSCode to develop this project you will notice a lot of files are hidden by the editor. This is a workspace setting which you can access with `ctrl+p` `./vscode/settings.json`. Any file/folder which is set to `true` in "files.exclude" is automatically excluded by "search.exclude". So to make the workspace settings file available in the search but hidden in the file explorer (left sidebar) the file must be specified in "search.exclude" and set to `false`.
+
+**This way files are accessible by search but your sidebar isn't cluttered w/ lightly used configs**
 
 ### Features
 

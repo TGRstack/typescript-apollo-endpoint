@@ -79,6 +79,7 @@
   "todohighlight.include": [
       "**/*.js",
       "**/*.jsx",
+      "**/*.json5",
       "**/*.ts",
       "**/*.tsx",
       "**/*.html",
