@@ -2,10 +2,8 @@
   <h1 align='center'>TS-GQL-endpoint | skeleton | TGRstack</h1>
 </p>
 
-
 **Development and Production Ready |⸰| [VSCode Extensions](https://marketplace.visualstudio.com/search?term=tgrstack&target=VSCode&category=All%20categories&sortBy=Relevance)**
  <!-- |⸰| Dockers for Dev and Prod -->
-
 
 [![Apollo Server](https://img.shields.io/badge/Apollo-2.3.8-orange.svg?style=flat-square)](https://github.com/apollographql/apollo-server)
 [![Express](https://img.shields.io/badge/Express-4.16.4-orange.svg?style=flat-square)](https://github.com/expressjs/express)
@@ -23,7 +21,7 @@
 
 ## About
 
-**Make all the knobs exposable |⸰| As lean as a racehorse can get |⸰| Fork and keep as an upstream, then create your own endpoints**
+**Expose all the knobs  |⸰| As lean as a racehorse can get |⸰| Fork and keep as an upstream, then create your own endpoints**
 
 The skeleton-tg-endpoint is a graphql-endpoint API starterkit/boilerplate. This skeleton demonstrates digesting remote third-party APIs to provide an experiential graphql gateway used by clients (primarily web, but as a developer API too).
 
@@ -158,7 +156,9 @@ src/
 
 - [x] :globe_with_meridians:  `express-server`
 - [x] :bread: in dev a browser to the website is opened
-- [ ] :passport_control:  `passport` for Authorization
+- [x] :mountain_railway:  `Winston` unified logger to files and console
+- [x] 🔒  `Helmet` for common security holes
+- [x] 🔒  `CORS` for Cross Origin denial
 
 ##### GraphQL
 
