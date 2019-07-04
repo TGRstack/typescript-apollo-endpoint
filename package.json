@@ -14,7 +14,8 @@
     "lodash.clonedeep": "4.5.0",
     "lodash.isequal": "4.5.0",
     "morgan": "1.9.1",
-    "winston": "3.1.0"
+    "winston": "3.1.0",
+    "snyk": "^1.189.0"
   },
   "devDependencies": {
     "@babel/cli": "7.0.0",
@@ -64,7 +65,9 @@
   "scripts": {
     "start": "nps",
     "test": "nps test",
-    "help": "nps help"
+    "help": "nps help",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "config": {
     "cz-emoji": {
@@ -88,5 +91,6 @@
   "bugs": {
     "url": "https://github.com/Falieson/2018-typescript-module/issues"
   },
-  "homepage": "https://github.com/Falieson/2018-typescript-module#readme"
+  "homepage": "https://github.com/Falieson/2018-typescript-module#readme",
+  "snyk": true
 }
