@@ -4,7 +4,7 @@
   "description": "tg-endpoint | skeleton | TGRstack",
   "main": "build/main.js",
   "dependencies": {
-    "apollo-server-express": "2.3.1",
+    "apollo-server-express": "3.0.0",
     "app-root-path": "2.1.0",
     "colors": "1.3.3",
     "cors": "2.8.5",
